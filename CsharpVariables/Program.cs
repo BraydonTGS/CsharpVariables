@@ -1,94 +1,107 @@
-﻿while (true)
+﻿
+using CsharpVariables;
+
+Greeting();
+string firstName = FirstName();
+string lastName = LastName();
+char middleInitial = MiddleInitial();
+int myAge = MyAge();
+string userEmail = UserEmail();
+bool userAnswer = UserAnswer();
+CreateNewUser(userAnswer, firstName, lastName, middleInitial, myAge, userEmail, userAnswer);
+
+
+  static void CreateNewUser(bool userInput, string firstName, string lastName, char middleInitial, int myAge, string userEmail, bool userAnswer)
+{
+    if (userInput == true)
+    {
+        Console.Write("Okay, Please Wait While your account is created...");
+        Console.ReadLine();
+        UserAccount newUser = new UserAccount(firstName, lastName, middleInitial, myAge, userEmail); 
+    }
+    else
+    {
+        Greeting();
+    }
+}
+
+static bool UserAnswer()
+{
+    Console.Write("Would you like to create a new Account (Y/N)? ");
+    string answer = Console.ReadLine().ToUpper();
+    if (answer == "Y")
+    {
+        bool newAnswer = true;
+        return newAnswer;
+    }
+    else
+    {
+        bool newAnswer = false;
+        Console.Write("Okay, Thank you. ");
+        Console.ReadLine();
+        return newAnswer;
+    }
+
+}
+
+static string UserEmail()
+{
+    Console.Write("Please Enter your Email Address: ");
+    string email = Console.ReadLine();
+    return email;
+}
+
+static int MyAge()
 {
     try
     {
-        Console.Write("Good Morning! Press any key to Continue: ");
-        Console.ReadLine();
-        Console.Write("Please Enter your First Name: ");
-        string firstName = Console.ReadLine();
-        Console.Write("Please Enter your Last Name: ");
-        string lastName = Console.ReadLine();
-        Console.Write("Please Enter your Middle Initial: ");
-        char middleInitial = Convert.ToChar(Console.ReadLine());
         Console.Write("Please Enter your Age: ");
         int myAge = Convert.ToInt32(Console.ReadLine());
-        Console.Write("Do you like pizza(Y/N)? ");
-        string answer = Console.ReadLine().ToUpper();
-
-        if (answer == "Y")
-        {
-            while (true)
-            {
-
-                try
-                {
-                    Console.Write("You may continue! ");
-                    Console.ReadLine();
-                    Console.Write("How many pizzas could you eat? ");
-                    double pizzaAnswer = Convert.ToDouble(Console.ReadLine());
-                    if (pizzaAnswer >= 3)
-                    {
-                        Console.Write("Nicccceeeeee, That is a lot of pizza!!! ");
-                        Console.WriteLine();
-                        Console.Write("What is the most you would spend on a Pizza? ");
-                        decimal money = Convert.ToDecimal(Console.ReadLine());
-                        Console.Write($"So let me get this straight.\nYour name is {firstName} {middleInitial} {lastName} \nYou are {myAge} years old \nYou really like pizza, so much so that you could eat {pizzaAnswer} pizzas \nThe most you would spend on one is ${money} dollars. \nIs this correct(Y/N)? ");
-                        string lastAnswer = Console.ReadLine().ToUpper();
-                        if (lastAnswer == "Y")
-                        {
-                            Console.Write("Wow, Now I know a lot about you!!!\nThank you for your time (^_^)");
-                            Console.ReadLine();
-                            break;
-                        }
-                        else
-                        {
-                            Console.Write("Sorry you have to start over... :(");
-                            Console.ReadLine();
-                            break;
-                        }
-
-                    }
-                    else
-                    {
-                        Console.Write("You can do better than that!!!");
-                        Console.ReadLine();
-                    }
-
-                }
-                catch (Exception e)
-                {
-                    Console.Write("Please Enter a Number and try again! ");
-                    Console.ReadLine();
-                }
-            }
-        }
-        else
-        {
-     
-            Console.Write("YOU DONT LIKE PIZZA?!?!?");
-            Console.WriteLine(); 
-            Console.Write("Are you sure(Y/N)? ");
-            string newAnswer = Console.ReadLine().ToUpper();
-
-            if (newAnswer == "Y")
-            {
-                Console.Write("Wow, I dont know what to say... Goodbye! ");
-                Console.ReadLine();
-                break;
-            }
-            else
-            {
-                Console.Write("I still don't know if I can trust you... Goodbye! ");
-                Console.ReadLine();
-                break;
-            }
-        }
+        return myAge;
     }
-
-    catch(Exception e)
+    catch
     {
-        Console.Write($"There was a problem: {e.Message} Please try again.");
-        Console.ReadLine();
+        Console.WriteLine("There was an Error.");
+        Console.WriteLine("Please Try Again and Enter a Number. ");
+        Console.WriteLine("-----------------------------------");
+        return MyAge();
+    }
+}
+
+static char MiddleInitial()
+{
+    try
+    {
+        Console.Write("Please Enter your Middle Initial: ");
+        char middleInitial = Convert.ToChar(Console.ReadLine());
+        return middleInitial;
+    }
+    catch
+    {
+        Console.WriteLine("There was an Error.");
+        Console.WriteLine("Please Try Again and Enter a Single Letter. ");
+        Console.WriteLine("-----------------------------------");
+        return MiddleInitial();
     }
 
+}
+
+static string LastName()
+{
+    Console.Write("Please Enter your Last Name: ");
+    string lastName = Console.ReadLine();
+    return lastName;
+}
+
+static string FirstName()
+{
+    Console.Write("Please Enter your First Name: ");
+    string firstName = Console.ReadLine();
+    return firstName;
+}
+
+static void Greeting()
+{
+    Console.Write("Welcome! Press any Key to Continue. ");
+    Console.ReadLine();
 }
