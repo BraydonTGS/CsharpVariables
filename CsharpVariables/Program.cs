@@ -2,7 +2,7 @@
 {
     try
     {
-        Console.Write("GoodMorning! Press any key to Continue: ");
+        Console.Write("Good Morning! Press any key to Continue: ");
         Console.ReadLine();
         Console.Write("Please Enter your First Name: ");
         string firstName = Console.ReadLine();
@@ -18,14 +18,18 @@
         if (answer == "Y")
         {
             while (true)
-                try {
-                    bool myAnswer = true;
-                    Console.Write("Wheeewwww, You may continue ");
+            {
+
+                try
+                {
+                    Console.Write("You may continue! ");
+                    Console.ReadLine();
                     Console.Write("How many pizzas could you eat? ");
                     double pizzaAnswer = Convert.ToDouble(Console.ReadLine());
                     if (pizzaAnswer >= 3)
                     {
                         Console.Write("Nicccceeeeee, That is a lot of pizza!!! ");
+                        Console.WriteLine();
                         Console.Write("What is the most you would spend on a Pizza? ");
                         decimal money = Convert.ToDecimal(Console.ReadLine());
                         Console.Write($"So let me get this straight.\nYour name is {firstName} {middleInitial} {lastName} \nYou are {myAge} years old \nYou really like pizza, so much so that you could eat {pizzaAnswer} pizzas \nThe most you would spend on one is ${money} dollars. \nIs this correct(Y/N)? ");
@@ -34,32 +38,35 @@
                         {
                             Console.Write("Wow, Now I know a lot about you!!!\nThank you for your time (^_^)");
                             Console.ReadLine();
-                            break; 
+                            break;
                         }
                         else
                         {
                             Console.Write("Sorry you have to start over... :(");
                             Console.ReadLine();
-                            break; 
+                            break;
                         }
-                      
+
                     }
                     else
                     {
                         Console.Write("You can do better than that!!!");
                         Console.ReadLine();
                     }
+
                 }
-            catch
-            {
-                Console.Write("Something Went Wrong Please Try Again. ");
-                Console.ReadLine();
+                catch (Exception e)
+                {
+                    Console.Write("Please Enter a Number and try again! ");
+                    Console.ReadLine();
+                }
             }
         }
         else
         {
-            bool myAnswer = false;
+     
             Console.Write("YOU DONT LIKE PIZZA?!?!?");
+            Console.WriteLine(); 
             Console.Write("Are you sure(Y/N)? ");
             string newAnswer = Console.ReadLine().ToUpper();
 
@@ -67,20 +74,20 @@
             {
                 Console.Write("Wow, I dont know what to say... Goodbye! ");
                 Console.ReadLine();
-                break; 
+                break;
             }
             else
             {
                 Console.Write("I still don't know if I can trust you... Goodbye! ");
                 Console.ReadLine();
-                break; 
+                break;
             }
         }
     }
 
-    catch
+    catch(Exception e)
     {
-        Console.Write("Something Went Wrong! Please Start Again...");
+        Console.Write($"There was a problem: {e.Message} Please try again.");
         Console.ReadLine();
     }
 
