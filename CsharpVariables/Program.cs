@@ -1,23 +1,25 @@
-﻿
-using CsharpVariables;
+﻿using CsharpVariables;
 
 Greeting();
+
 string firstName = FirstName();
 string lastName = LastName();
 char middleInitial = MiddleInitial();
 int myAge = MyAge();
 string userEmail = UserEmail();
 bool userAnswer = UserAnswer();
+
 CreateNewUser(userAnswer, firstName, lastName, middleInitial, myAge, userEmail, userAnswer);
 
 
-  static void CreateNewUser(bool userInput, string firstName, string lastName, char middleInitial, int myAge, string userEmail, bool userAnswer)
+static void CreateNewUser(bool userInput, string firstName, string lastName, char middleInitial, int myAge, string userEmail, bool userAnswer)
 {
     if (userInput == true)
     {
         Console.Write("Okay, Please Wait While your account is created...");
         Console.ReadLine();
-        UserAccount newUser = new UserAccount(firstName, lastName, middleInitial, myAge, userEmail); 
+        Thread.Sleep(3000); 
+        UserAccount newUser = new UserAccount(firstName, lastName, middleInitial, myAge, userEmail);
     }
     else
     {
