@@ -18,8 +18,7 @@
         if (answer == "Y")
         {
             while (true)
-                try
-                {
+                try {
                     bool myAnswer = true;
                     Console.Write("Wheeewwww, You may continue ");
                     Console.Write("How many pizzas could you eat? ");
@@ -30,7 +29,20 @@
                         Console.Write("What is the most you would spend on a Pizza? ");
                         decimal money = Convert.ToDecimal(Console.ReadLine());
                         Console.Write($"So let me get this straight.\nYour name is {firstName} {middleInitial} {lastName} \nYou are {myAge} years old \nYou really like pizza, so much so that you could eat {pizzaAnswer} pizzas \nThe most you would spend on one is ${money} dollars. \nIs this correct(Y/N)? ");
-                        Console.ReadLine();
+                        string lastAnswer = Console.ReadLine().ToUpper();
+                        if (lastAnswer == "Y")
+                        {
+                            Console.Write("Wow, Now I know a lot about you!!!\nThank you for your time (^_^)");
+                            Console.ReadLine();
+                            break; 
+                        }
+                        else
+                        {
+                            Console.Write("Sorry you have to start over... :(");
+                            Console.ReadLine();
+                            break; 
+                        }
+                      
                     }
                     else
                     {
@@ -38,10 +50,11 @@
                         Console.ReadLine();
                     }
                 }
-                catch
-                {
-                    Console.Write("Something Went Wrong Please Try Again. "); 
-                }
+            catch
+            {
+                Console.Write("Something Went Wrong Please Try Again. ");
+                Console.ReadLine();
+            }
         }
         else
         {
@@ -54,11 +67,13 @@
             {
                 Console.Write("Wow, I dont know what to say... Goodbye! ");
                 Console.ReadLine();
+                break; 
             }
             else
             {
                 Console.Write("I still don't know if I can trust you... Goodbye! ");
                 Console.ReadLine();
+                break; 
             }
         }
     }
